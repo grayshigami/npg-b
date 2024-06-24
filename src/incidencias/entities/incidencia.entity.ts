@@ -1,5 +1,5 @@
 import { Usuario } from "src/usuarios/entities/usuario.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Incidencia {
@@ -9,12 +9,14 @@ export class Incidencia {
     nombre: string;
     @Column()
     apellido: string;
-    @Column()
-    horaEntrada: string;
-    @Column()
-    horaSalida: string;
+    @Column({type: 'datetime'})
+    horaEntrada: Date;
+    @Column({type: 'datetime', nullable: true, default: null})
+    horaSalida: Date;
     @Column()
     comentario: string;
     @ManyToOne(() => Usuario)
     usuario: Usuario;
+    @Column()
+    usuarioId: number;
 }

@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Usuario {
@@ -6,20 +6,20 @@ export class Usuario {
     id: number;
     @Column()
     nombre: string;
-    @Column()
+    @Column({nullable: true})
     apellido: string;
     @Column()
     nombreUsuario: string;
-    @Column()
+    @Column({nullable: true})
     correo: string;
     @Column()
     contrasena: string;
     @Column()
     tipoUsuario: number;
-    @Column()
-    horaRegistro: string;
-    @Column()
-    horaActualizacion: string;
+    @CreateDateColumn({type: 'datetime', default: () => 'GETDATE()'})
+    horaRegistro: Date;
+    @CreateDateColumn({type: 'datetime', default: () => 'GETDATE()'})
+    horaActualizacion: Date;
     @Column({default: 1})
     estado: number;
 }

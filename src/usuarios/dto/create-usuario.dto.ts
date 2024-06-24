@@ -1,12 +1,10 @@
 export class CreateUsuarioDto {
     id: number;
     nombre: string;
-    apellido: string;
+    apellido?: string;
     nombreUsuario: string;
-    correo: string;
+    correo?: string;
     contrasena: string;
     tipoUsuario: number;
-    horaRegistro: string;
-    horaActualizacion: string;
     estado: number;
 }

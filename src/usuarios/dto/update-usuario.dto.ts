@@ -6,7 +6,5 @@ export class UpdateUsuarioDto {
     correo?: string;
     contrasena?: string;
     tipoUsuario?: number;
-    horaRegistro?: string;
-    horaActualizacion?: string;
     estado?: number;
 }
