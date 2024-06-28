@@ -14,6 +14,7 @@ export class IncidenciasService {
 
   async create(createIncidenciaDto: CreateIncidenciaDto) {
     const incidencia = this.incidenciasRepository.create(createIncidenciaDto);
+    console.log(incidencia.horaEntrada);
     return await this.incidenciasRepository.save(incidencia);
   }
 

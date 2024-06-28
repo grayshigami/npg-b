@@ -13,6 +13,7 @@ export class UsuariosService {
   ) {}
 
   async create(createUsuarioDto: CreateUsuarioDto) {
+    createUsuarioDto.nombreUsuario = createUsuarioDto.nombreUsuario.toLowerCase();
     const usuario = this.usuariosRepository.create(createUsuarioDto);
     return await this.usuariosRepository.save(usuario);
   }

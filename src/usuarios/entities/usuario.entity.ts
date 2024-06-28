@@ -8,7 +8,7 @@ export class Usuario {
     nombre: string;
     @Column({nullable: true})
     apellido: string;
-    @Column()
+    @Column({unique: true})
     nombreUsuario: string;
     @Column({nullable: true})
     correo: string;
