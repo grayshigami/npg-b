@@ -6,6 +6,7 @@ import { IncidenciasModule } from './incidencias/incidencias.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Usuario } from './usuarios/entities/usuario.entity';
 import { Incidencia } from './incidencias/entities/incidencia.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import { Incidencia } from './incidencias/entities/incidencia.entity';
         trustServerCertificate: true
       }
     }),
-    UsuariosModule, IncidenciasModule],
+    UsuariosModule, IncidenciasModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })

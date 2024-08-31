@@ -8,7 +8,7 @@ export class Incidencia {
     @Column()
     nombre: string;
     @Column()
-    apellido: string;
+    empresa: string;
     @Column({type: 'datetime'})
     horaEntrada: Date;
     @Column({type: 'datetime', nullable: true, default: null})
@@ -19,4 +19,6 @@ export class Incidencia {
     usuario: Usuario;
     @Column()
     usuarioId: number;
+    @Column({nullable: true})
+    actualizacionId: number;
 }

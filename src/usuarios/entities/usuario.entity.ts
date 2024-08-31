@@ -10,11 +10,11 @@ export class Usuario {
     apellido: string;
     @Column({unique: true})
     nombreUsuario: string;
-    @Column({nullable: true})
+    @Column({unique: true, nullable: true})
     correo: string;
     @Column()
     contrasena: string;
-    @Column()
+    @Column({type: 'int', default: 0})
     tipoUsuario: number;
     @CreateDateColumn({type: 'datetime', default: () => 'GETDATE()'})
     horaRegistro: Date;
@@ -22,4 +22,8 @@ export class Usuario {
     horaActualizacion: Date;
     @Column({default: 1})
     estado: number;
+    @Column()
+    registroId: number;
+    @Column()
+    actualizacionId: number;
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateIncidenciaDto } from './dto/create-incidencia.dto';
 import { UpdateIncidenciaDto } from './dto/update-incidencia.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { Incidencia } from './entities/incidencia.entity';
 
 @Injectable()
@@ -14,7 +14,6 @@ export class IncidenciasService {
 
   async create(createIncidenciaDto: CreateIncidenciaDto) {
     const incidencia = this.incidenciasRepository.create(createIncidenciaDto);
-    console.log(incidencia.horaEntrada);
     return await this.incidenciasRepository.save(incidencia);
   }
 
@@ -24,6 +23,22 @@ export class IncidenciasService {
 
   async findOne(id: number) {
     return await this.incidenciasRepository.findOne({where: {id}, relations: ['usuario']});
+  }
+
+  async findByNombre(nombre: string) {
+    return await this.incidenciasRepository.find({
+      where: {
+        nombre: Like(`%${nombre}%`)
+      }
+    });
+  }
+
+  async findByEmpresa(empresa: string) {
+    return await this.incidenciasRepository.find({
+      where: {
+        empresa: Like(`%${empresa}%`)
+      }
+    });
   }
 
   async update(id: number, updateIncidenciaDto: UpdateIncidenciaDto) {
